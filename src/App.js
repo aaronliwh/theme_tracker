@@ -1,5 +1,6 @@
 import './App.css';
 import React, { useState } from 'react';
+import {test} from "./firebaseModel"
 
 function App() {
   const [inputValue, setInputValue] = useState('');
@@ -9,6 +10,7 @@ function App() {
   };
 
   const handleButtonClick = () => {
+    test(inputValue);
   };
 
   return (
