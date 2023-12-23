@@ -9,9 +9,15 @@ const db= getDatabase(app)
 
 const PATH="test";
 
+let data = "";
 
 function test(input) {
     set(ref(db, PATH+"/test"), input);
 }
 
-export {test};
+function getData(){
+    return get(ref(db, PATH+"/test")).then((val) => {return val.val()});
+}
+  
+
+export {test,getData,data};

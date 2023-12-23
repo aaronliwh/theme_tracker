@@ -1,6 +1,6 @@
 import './App.css';
-import React, { useState } from 'react';
-import {test} from "./firebaseModel"
+import React, { useState, useEffect } from 'react';
+import {test,getData,data} from "./firebaseModel"
 
 function App() {
   const [inputValue, setInputValue] = useState('');
@@ -12,6 +12,16 @@ function App() {
   const handleButtonClick = () => {
     test(inputValue);
   };
+
+  useEffect(() => {
+    getData()
+    .then(res => {setInputValue(res)});
+  },[])
+
+
+ if(inputValue === ''){
+  return "Please wait !"
+ }
 
   return (
     <div className="App">
