@@ -1,30 +1,37 @@
 import React, { useState, useEffect } from 'react';
-import { getData,test } from '../firebaseModel';
+import {setGoalsToDatabase, getGoalsFromDatabase} from '../firebaseModel';
 import MainPageView from "../views/MainPageView"
 
 function MainPagePresenter() {
     const [inputValue, setInputValue] = useState('');
-  
+    const [goals,setGoals] = useState(["one","two","three"]);
+    const [loading,setLoading] = useState(true)
+
     const handleInputChange = (e) => {
       setInputValue(e.target.value);
     };
   
     const handleButtonClick = () => {
-      test(inputValue);
+      setGoals([...goals,inputValue]);
+      setGoalsToDatabase([...goals,inputValue]);
+      
     };
   
     useEffect(() => {
-      getData()
-      .then(res => {setInputValue(res)});
+      getGoalsFromDatabase()
+      .then(res => {
+        setGoals(res)
+        setLoading(false);
+      });
     },[])
   
   
-   if(inputValue === ''){
+   if(loading){
     return <p>Please wait !</p>
    }
   
     return <MainPageView
-    inputValue = {inputValue}
+    goals = {goals}
     handleButtonClick = {handleButtonClick}
     handleInputChange = {handleInputChange}
     />

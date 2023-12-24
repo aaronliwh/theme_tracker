@@ -9,15 +9,14 @@ const db= getDatabase(app)
 
 const PATH="test";
 
-let data = "";
 
-function test(input) {
+function setGoalsToDatabase(input) {
     set(ref(db, PATH+"/test"), input);
 }
 
-function getData(){
+function getGoalsFromDatabase(){
     return get(ref(db, PATH+"/test")).then((val) => {return val.val()});
 }
   
 
-export {test,getData,data};
+export {setGoalsToDatabase, getGoalsFromDatabase};

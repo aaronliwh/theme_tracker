@@ -9,7 +9,7 @@ function MainPagePresenter(props) {
     <button onClick={props.handleButtonClick}>
       Do Nothing
     </button>
-    <p>Wassup: {props.inputValue}</p>
+    {props.goals.map((val) => {return <p>{val}</p>})}
   </div>
 }
 
