@@ -11,7 +11,7 @@ function MainPagePresenter() {
       setInputValue(e.target.value);
     };
   
-    const handleButtonClick = () => {
+    const saveGoals = () => {
       setGoals([...goals,inputValue]);
       setGoalsToDatabase([...goals,inputValue]);
       
@@ -32,7 +32,7 @@ function MainPagePresenter() {
   
     return <MainPageView
     goals = {goals}
-    handleButtonClick = {handleButtonClick}
+    saveGoals = {saveGoals}
     handleInputChange = {handleInputChange}
     />
   }

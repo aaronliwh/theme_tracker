@@ -1,4 +1,7 @@
+import GoalView from "./GoalView";
+
 function MainPagePresenter(props) {
+
     return <div className="App">
     <input 
       type="text" 
@@ -6,10 +9,12 @@ function MainPagePresenter(props) {
       onChange={props.handleInputChange} 
       placeholder="Type something..." 
     />
-    <button onClick={props.handleButtonClick}>
+    <button onClick={props.saveGoals}>
       Do Nothing
     </button>
-    {props.goals.map((val) => {return <p>{val}</p>})}
+    {props.goals.map((val) => {
+      return <GoalView val={val}/>
+      })}
   </div>
 }
 
