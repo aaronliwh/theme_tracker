@@ -12,8 +12,8 @@ function MainPagePresenter(props) {
     <button onClick={props.saveGoals}>
       Do Nothing
     </button>
-    {props.goals.map((val) => {
-      return <GoalView val={val}/>
+    {props.goals.map((val,index) => {
+      return <ul key = {index}><GoalView val={val} id={index} remove={() => {props.removeBasedOnIndex(val)}}/></ul>
       })}
   </div>
 }

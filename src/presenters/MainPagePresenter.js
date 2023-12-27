@@ -11,11 +11,18 @@ function MainPagePresenter() {
       setInputValue(e.target.value);
     };
   
-    const saveGoals = () => {
+    function saveGoals() {
       setGoals([...goals,inputValue]);
       setGoalsToDatabase([...goals,inputValue]);
-      
     };
+
+    function removeBasedOnIndex(val){
+      const newGoals = [...goals].filter((task) => {
+        return task != val;
+      })
+      setGoals(newGoals)
+      setGoalsToDatabase(newGoals);
+    }
   
     useEffect(() => {
       getGoalsFromDatabase()
@@ -32,6 +39,7 @@ function MainPagePresenter() {
   
     return <MainPageView
     goals = {goals}
+    removeBasedOnIndex ={removeBasedOnIndex}
     saveGoals = {saveGoals}
     handleInputChange = {handleInputChange}
     />

@@ -2,7 +2,7 @@ import { useState } from "react";
 import full_circle from "../assets/full_circle.svg"
 import "./ToggleButtonStyle.css"; 
 
-function ToggleButton(props){
+function ToggleButton(){
     const [opacity,setOpacity]  = useState(0.99);
 
     function toggle() {
