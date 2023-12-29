@@ -11,7 +11,7 @@ function MainPagePresenter() {
       setInputValue(e.target.value);
     };
   
-    function addGoals() {
+    function addGoal() {
       const newGoal = {
         name : inputValue,
         mon : 0,
@@ -26,13 +26,13 @@ function MainPagePresenter() {
       setGoalsToDatabase([...goals,newGoal]);
     };
 
-    function saveToDatabase(id,day){
+    function editGoal(id,day){
       goals[id][day] += 1;
       goals[id][day] %= 3;
       setGoalsToDatabase(goals);
     }
 
-    function removeBasedOnIndex(val){
+    function removeGoal(val){
       const newGoals = [...goals].filter((task) => {
         return task != val;
       })
@@ -55,10 +55,10 @@ function MainPagePresenter() {
   
     return <MainPageView
     goals = {goals}
-    removeBasedOnIndex ={removeBasedOnIndex}
-    saveGoals = {addGoals}
+    removeGoal ={removeGoal}
+    addGoal = {addGoal}
+    editGoal = {editGoal}
     handleInputChange = {handleInputChange}
-    saveToDatabase = {saveToDatabase}
     />
   }
 

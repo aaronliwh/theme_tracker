@@ -9,7 +9,7 @@ function MainPageView(props) {
       onChange={props.handleInputChange} 
       placeholder="Type something..." 
     />
-    <button onClick={props.saveGoals}>
+    <button onClick={props.addGoal}>
       Do Nothing
     </button>
     {props.goals.map((val,index) => {
@@ -17,8 +17,8 @@ function MainPageView(props) {
         <GoalView 
           val={val}
           id={index}
-          remove={() => {props.removeBasedOnIndex(val)}}
-          save={props.saveToDatabase}/>
+          removeGoalByVal={() => {props.removeGoal(val)}}
+          editGoal={props.editGoal}/>
         </ul>
       })}
   </div>

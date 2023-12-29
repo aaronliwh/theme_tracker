@@ -18,8 +18,8 @@ function GoalView(props) {
         }
     }
 
-    const ToggleButton = ({val,save}) => {
-        const [type,setType]  = useState(numToImage(val));
+    const ToggleButton = ({day}) => {
+        const [type,setType]  = useState(numToImage(props.val[day]));
         function toggle() {
             if(type === empty_circle){
                 setType(half_circle);
@@ -28,22 +28,22 @@ function GoalView(props) {
             } else {
                 setType(empty_circle);
             }
-            save();
+            props.editGoal(props.id,day);
         }
     
         return <img onClick={toggle} className = "circle" src={type} alt = "test"/>
     }
 
     return <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <button onClick = {props.remove}>Remove</button>
+            <button onClick = {props.removeGoalByVal}>Remove</button>
             <p style={{ display: 'inline-block', width: '120px', textOverflow: 'ellipsis', overflow: 'hidden',  whiteSpace: 'nowrap'}}>{props.val.name}</p>
-            <ToggleButton val={props.val.mon} save={() => {props.save(props.id,"mon")}}/>
-            <ToggleButton val={props.val.tue} save={() => {props.save(props.id,"tue")}}/>
-            <ToggleButton val={props.val.wed} save={() => {props.save(props.id,"wed")}}/>
-            <ToggleButton val={props.val.thu} save={() => {props.save(props.id,"thu")}}/>
-            <ToggleButton val={props.val.fri} save={() => {props.save(props.id,"fri")}}/>
-            <ToggleButton val={props.val.sat} save={() => {props.save(props.id,"sat")}}/>
-            <ToggleButton val={props.val.sun} save={() => {props.save(props.id,"sun")}}/>
+            <ToggleButton day = {"mon"}/>
+            <ToggleButton day = {"tue"}/>
+            <ToggleButton day = {"wed"}/>
+            <ToggleButton day = {"thu"}/>
+            <ToggleButton day = {"fri"}/>
+            <ToggleButton day = {"sat"}/>
+            <ToggleButton day = {"sun"}/>
         </div>
 }
 
