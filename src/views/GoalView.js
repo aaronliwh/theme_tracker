@@ -1,4 +1,4 @@
-import ToggleButton from "../utils/ToggleButton";
+import ToggleButtonStyle from "./ToggleButtonStyle.css"
 import empty_circle from "../assets/empty_circle.svg"
 import half_circle from "../assets/half_circle.svg"
 import full_circle from "../assets/full_circle.svg"
