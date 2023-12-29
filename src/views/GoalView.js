@@ -1,11 +1,18 @@
 import ToggleButton from "../utils/ToggleButton";
 
+
 function GoalView(props) {
 
     return <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <p style={{ display: 'inline-block'}}>{props.val}</p>
-            <ToggleButton/>
             <button onClick = {props.remove}>Remove</button>
+            <p style={{ display: 'inline-block', width: '120px', textOverflow: 'ellipsis', overflow: 'hidden',  whiteSpace: 'nowrap'}}>{props.val}</p>
+            <ToggleButton/>
+            <ToggleButton/>
+            <ToggleButton/>
+            <ToggleButton/>
+            <ToggleButton/>
+            <ToggleButton/>
+            <ToggleButton/>
         </div>
 }
 

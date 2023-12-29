@@ -1,19 +1,24 @@
 import { useState } from "react";
+import empty_circle from "../assets/empty_circle.svg"
+import half_circle from "../assets/half_circle.svg"
 import full_circle from "../assets/full_circle.svg"
+
 import "./ToggleButtonStyle.css"; 
 
 function ToggleButton(){
-    const [opacity,setOpacity]  = useState(0.99);
+    const [type,setType]  = useState(empty_circle);
 
     function toggle() {
-        if(opacity === 0.99){
-            setOpacity(0.33);
+        if(type === empty_circle){
+            setType(half_circle);
+        } else if(type === half_circle){
+            setType(full_circle);
         } else {
-            setOpacity(opacity + 0.33);
+            setType(empty_circle);
         }
     }
 
-    return <img onClick={toggle} className = "circle" style={{ opacity: opacity.toString() }} src={full_circle} alt = "test"/>
+    return <img onClick={toggle} className = "circle" src={type} alt = "test"/>
 }
 
 export default ToggleButton;
