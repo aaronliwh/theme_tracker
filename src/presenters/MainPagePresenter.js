@@ -11,10 +11,26 @@ function MainPagePresenter() {
       setInputValue(e.target.value);
     };
   
-    function saveGoals() {
-      setGoals([...goals,inputValue]);
-      setGoalsToDatabase([...goals,inputValue]);
+    function addGoals() {
+      const newGoal = {
+        name : inputValue,
+        mon : 0,
+        tue : 0,
+        wed : 0,
+        thu : 0,
+        fri : 0,
+        sat : 0,
+        sun : 0,
+      }
+      setGoals([...goals,newGoal]);
+      setGoalsToDatabase([...goals,newGoal]);
     };
+
+    function saveToDatabase(id,day){
+      goals[id][day] += 1;
+      goals[id][day] %= 3;
+      setGoalsToDatabase(goals);
+    }
 
     function removeBasedOnIndex(val){
       const newGoals = [...goals].filter((task) => {
@@ -40,10 +56,11 @@ function MainPagePresenter() {
     return <MainPageView
     goals = {goals}
     removeBasedOnIndex ={removeBasedOnIndex}
-    saveGoals = {saveGoals}
+    saveGoals = {addGoals}
     handleInputChange = {handleInputChange}
+    saveToDatabase = {saveToDatabase}
     />
   }
 
-
+  
   export default MainPagePresenter;

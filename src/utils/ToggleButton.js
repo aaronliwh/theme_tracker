@@ -5,8 +5,21 @@ import full_circle from "../assets/full_circle.svg"
 
 import "./ToggleButtonStyle.css"; 
 
-function ToggleButton(){
-    const [type,setType]  = useState(empty_circle);
+function numToImage(num){
+    if(num === 0){
+        return empty_circle;
+    }
+    if(num === 1){
+        return half_circle;
+    }
+    if(num === 2){
+        return full_circle;
+    }
+}
+function ToggleButton(props){
+    const [type,setType]  = useState(numToImage(props.val));
+
+
 
     function toggle() {
         if(type === empty_circle){

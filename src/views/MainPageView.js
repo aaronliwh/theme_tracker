@@ -1,6 +1,6 @@
 import GoalView from "./GoalView";
 
-function MainPagePresenter(props) {
+function MainPageView(props) {
 
     return <div className="App">
     <input 
@@ -13,11 +13,17 @@ function MainPagePresenter(props) {
       Do Nothing
     </button>
     {props.goals.map((val,index) => {
-      return <ul key = {index}><GoalView val={val} id={index} remove={() => {props.removeBasedOnIndex(val)}}/></ul>
+      return <ul key = {index}>
+        <GoalView 
+          val={val}
+          id={index}
+          remove={() => {props.removeBasedOnIndex(val)}}
+          save={props.saveToDatabase}/>
+        </ul>
       })}
   </div>
 }
 
 
 
-export default MainPagePresenter;
+export default MainPageView;
