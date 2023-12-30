@@ -1,12 +1,12 @@
 .circle{
     visibility: visible;
     display: inline;
-    width: 24px;
-    height: 24px;
+    width: 72px;
+    height: 72px;
 }
 
 .outerButton{
     visibility: hidden;
-    width: 24px;
-    height: 24px;
+    width: 72px;
+    height: 72px;
 }

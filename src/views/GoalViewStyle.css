@@ -1,0 +1,17 @@
+.goalView {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width : 100%;
+}
+
+.goalText {
+    display: inline-block;
+    width: 480px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 32px;
+    margin-top: 0;
+    margin-bottom: 0;
+}

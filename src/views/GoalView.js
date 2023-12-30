@@ -1,10 +1,17 @@
-import ToggleButtonStyle from "./ToggleButtonStyle.css"
+import "./ToggleButtonStyle.css"
+import "./GoalViewStyle.css"
 import empty_circle from "../assets/empty_circle.svg"
 import half_circle from "../assets/half_circle.svg"
 import full_circle from "../assets/full_circle.svg"
 import { useState } from "react";
 
 function GoalView(props) {
+    const [inputValue, setInputValue] = useState(props.val.name);
+
+    const handleInputChange = (e) => {
+        setInputValue(e.target.value);
+        props.editGoal(props.id,null,e.target.value);
+    };
 
     function numToImage(num){
         if(num === 0){
@@ -34,9 +41,14 @@ function GoalView(props) {
         return <img onClick={toggle} className = "circle" src={type} alt = "test"/>
     }
 
-    return <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    return <div className="goalView">
             <button onClick = {props.removeGoalByVal}>Remove</button>
-            <p style={{ display: 'inline-block', width: '120px', textOverflow: 'ellipsis', overflow: 'hidden',  whiteSpace: 'nowrap'}}>{props.val.name}</p>
+            <input className="goalText"
+                type="text" 
+                value={inputValue} 
+                onChange={handleInputChange} 
+                placeholder="Type something..." 
+            />
             <ToggleButton day = {"mon"}/>
             <ToggleButton day = {"tue"}/>
             <ToggleButton day = {"wed"}/>

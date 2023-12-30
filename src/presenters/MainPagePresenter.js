@@ -12,6 +12,9 @@ function MainPagePresenter() {
     };
   
     function addGoal() {
+      if(inputValue === ""){
+        return;
+      }
       const newGoal = {
         name : inputValue,
         mon : 0,
@@ -26,9 +29,12 @@ function MainPagePresenter() {
       setGoalsToDatabase([...goals,newGoal]);
     };
 
-    function editGoal(id,day){
-      goals[id][day] += 1;
-      goals[id][day] %= 3;
+    function editGoal(id,day=null,newText=goals[id]["name"]){
+      goals[id]["name"] = newText
+      if(day){
+        goals[id][day] += 1;
+        goals[id][day] %= 3;
+      }
       setGoalsToDatabase(goals);
     }
 

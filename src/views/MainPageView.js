@@ -13,7 +13,7 @@ function MainPageView(props) {
       Do Nothing
     </button>
     {props.goals.map((val,index) => {
-      return <ul key = {index}>
+      return <ul key = {index} style={{width : '100%'}}>
         <GoalView 
           val={val}
           id={index}
