@@ -2,6 +2,8 @@ import GoalView from "./GoalView";
 
 function MainPageView(props) {
 
+    
+
     return <div className="App">
     <input 
       type="text" 

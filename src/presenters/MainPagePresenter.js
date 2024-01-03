@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {setGoalsToDatabase, getGoalsFromDatabase} from '../firebaseModel';
 import MainPageView from "../views/MainPageView"
+import {id} from "../firebaseModel"
 
 function MainPagePresenter() {
     const [inputValue, setInputValue] = useState('');
@@ -15,6 +16,7 @@ function MainPagePresenter() {
       if(inputValue === ""){
         return;
       }
+
       const newGoal = {
         name : inputValue,
         mon : 0,
@@ -25,6 +27,12 @@ function MainPagePresenter() {
         sat : 0,
         sun : 0,
       }
+      if(goals === null){
+        setGoals([newGoal]);
+        setGoalsToDatabase([newGoal]);
+        return;
+      }
+      
       setGoals([...goals,newGoal]);
       setGoalsToDatabase([...goals,newGoal]);
     };
