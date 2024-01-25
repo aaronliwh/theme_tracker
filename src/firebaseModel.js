@@ -5,7 +5,7 @@ import { getAuth } from "firebase/auth";
 const db= getDatabase(app)
 
 const PATH="test/";
-let id = getAuth(app).currentUser.uid;
+let id = getAuth(app).currentUser ? getAuth(app).currentUser.uid : "test";
 
 function setGoalsToDatabase(input) {
     set(ref(db, PATH+id), input);

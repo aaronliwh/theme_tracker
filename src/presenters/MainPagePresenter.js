@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import {setGoalsToDatabase, getGoalsFromDatabase} from '../firebaseModel';
 import MainPageView from "../views/MainPageView"
-import {id} from "../firebaseModel"
+import {auth} from '../firebaseConfig';
 
 function MainPagePresenter() {
+
+    console.log(auth.currentUser);
+
     const [inputValue, setInputValue] = useState('');
     const [goals,setGoals] = useState(["one","two","three"]);
     const [loading,setLoading] = useState(true)
@@ -48,7 +51,7 @@ function MainPagePresenter() {
 
     function removeGoal(val){
       const newGoals = [...goals].filter((task) => {
-        return task != val;
+        return task !== val;
       })
       setGoals(newGoals)
       setGoalsToDatabase(newGoals);

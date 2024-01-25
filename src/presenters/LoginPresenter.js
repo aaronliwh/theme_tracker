@@ -7,8 +7,8 @@ import {
     signInWithEmailAndPassword,
   } from "firebase/auth";
 
-import app from '../firebaseConfig';
-const auth = getAuth(app);
+import {auth} from '../firebaseConfig';
+
 
 function LoginPresenter() {
     let navigate = useNavigate();
@@ -17,6 +17,7 @@ function LoginPresenter() {
 
     function handleClick() {
         signInWithEmailAndPassword(auth,username,password).then((cred) => {
+            
             navigate("/home")
         })
     }
