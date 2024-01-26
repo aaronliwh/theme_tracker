@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react';
 import {setGoalsToDatabase, getGoalsFromDatabase} from '../firebaseModel';
 import MainPageView from "../views/MainPageView"
 import {auth} from '../firebaseConfig';
+import { useNavigate } from "react-router-dom";
 
 function MainPagePresenter() {
-
-    console.log(auth.currentUser);
-
+    let navigate = useNavigate();
     const [inputValue, setInputValue] = useState('');
     const [goals,setGoals] = useState(["one","two","three"]);
     const [loading,setLoading] = useState(true)
@@ -58,6 +57,9 @@ function MainPagePresenter() {
     }
   
     useEffect(() => {
+      if(!auth.currentUser){
+        navigate("/")
+      }
       getGoalsFromDatabase()
       .then(res => {
         setGoals(res)
@@ -69,6 +71,8 @@ function MainPagePresenter() {
    if(loading){
     return <p>Please wait !</p>
    }
+
+   
   
     return <MainPageView
     goals = {goals}

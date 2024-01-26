@@ -1,8 +1,9 @@
 import GoalView from "./GoalView";
+import {auth} from '../firebaseConfig';
+import { useNavigate } from "react-router-dom";
 
 function MainPageView(props) {
-
-    
+    let navigate = useNavigate();
 
     return <div className="App">
     <input 
@@ -23,6 +24,12 @@ function MainPageView(props) {
           editGoal={props.editGoal}/>
         </ul>
       })}
+    <button onClick={() => {
+      auth.signOut()
+      navigate("/")
+      }}>
+      Logout
+    </button>
   </div>
 }
 
