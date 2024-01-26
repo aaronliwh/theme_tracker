@@ -3,6 +3,7 @@ import {setGoalsToDatabase, getGoalsFromDatabase} from '../firebaseModel';
 import MainPageView from "../views/MainPageView"
 import {auth} from '../firebaseConfig';
 import { useNavigate } from "react-router-dom";
+import { defaultGoal } from '../utils/utils';
 
 function MainPagePresenter() {
     let navigate = useNavigate();
@@ -19,22 +20,7 @@ function MainPagePresenter() {
         return;
       }
 
-      const newGoal = {
-        name : inputValue,
-        mon : 0,
-        tue : 0,
-        wed : 0,
-        thu : 0,
-        fri : 0,
-        sat : 0,
-        sun : 0,
-      }
-      if(goals === null){
-        setGoals([newGoal]);
-        setGoalsToDatabase([newGoal]);
-        return;
-      }
-      
+      const newGoal = defaultGoal(inputValue)
       setGoals([...goals,newGoal]);
       setGoalsToDatabase([...goals,newGoal]);
     };
@@ -55,6 +41,7 @@ function MainPagePresenter() {
       setGoals(newGoals)
       setGoalsToDatabase(newGoals);
     }
+
   
     useEffect(() => {
       if(!auth.currentUser){
@@ -62,7 +49,7 @@ function MainPagePresenter() {
       }
       getGoalsFromDatabase()
       .then(res => {
-        setGoals(res)
+        res === null ? setGoals([]) : setGoals(res)
         setLoading(false);
       });
     },[])
